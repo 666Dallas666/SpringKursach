@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <title>Manage deposits</title>
+    <link rel="stylesheet" href="https://snipp.ru/cdn/chosen/1.8.7/chosen.min.css">
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://snipp.ru/cdn/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#deposit').chosen({
+                width: '100%',
+                no_results_text: 'Совпадений не найдено',
+                placeholder_text_single: 'Выберите залог'
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" role="form" th:method="post" th:object="${deposit}">
+
+        <select class="js-chosen" single name="deposit" id="deposit" th:name="deposit" required>
+            <option value=""></option>
+            <option th:each="deposit : ${deposits}" th:value="${deposit.id}">
+                <span th:text="${deposit.id}"></span>
+                <span th:text="${deposit.name}"></span>
+                <span th:text="${deposit.price}"></span>
+            </option>
+        </select> <br>
+        <input type="submit" name="Выставить на продажу" value="Выставить на продажу">
+    </form>
+    <a href="/admin">Назад</a>
+</div>
+</body>
+</html>

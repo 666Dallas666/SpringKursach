@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <title>Main</title>
+    <link rel="stylesheet" href="https://snipp.ru/cdn/chosen/1.8.7/chosen.min.css">
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://snipp.ru/cdn/chosen/1.8.7/chosen.jquery.min.js"></script>
+    </head>
+<body>
+
+<form name="Залог" action="#" id="newcar" th:action="@{/createdeposit}" th:object="${deposit}" method="post">
+    <input type="text" name="username" th:field="*{name}" class="form-control" placeholder="Название вещи" required><br>
+    <input type="text" name="model" th:field="*{price}" class="form-control" placeholder="Цена вещи" required><br>
+    <input type="submit" value="Заложить вещь"> <br>
+</form>
+
+<br>
+<a href="/changepassword">Сменить пароль</a>
+<p>Текущий пользователь <strong th:text="${user}"></strong></p>
+<a href="/market">Магазин</a> <br>
+<a href="/userdeposits">Список залогов</a> <br>
+<a href="/userpurchases">Список покупок</a> <br>
+<a href="/logout">Выход</a>
+</body>
+</html>

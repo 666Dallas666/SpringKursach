@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content>
+  <meta name="author" content>
+  <title>Manage deposits</title>
+  <link rel="stylesheet" href="https://snipp.ru/cdn/chosen/1.8.7/chosen.min.css">
+  <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://snipp.ru/cdn/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#product').chosen({
+        width: '100%',
+        no_results_text: 'Совпадений не найдено',
+        placeholder_text_single: 'Выберите продукт'
+      });
+    });
+  </script>
+</head>
+<body>
+<div class="container">
+  <form class="form-signin" role="form" th:method="post" th:object="${product}">
+
+    <select class="js-chosen" single name="product" id="product" th:name="product" required>
+      <option value=""></option>
+      <option th:each="product : ${products}" th:value="${product.id}">
+        <span th:text="${product.id}"></span>
+        <span th:text="${product.name}"></span>
+        <span th:text="${product.price}"></span>
+      </option>
+    </select> <br>
+    <input type="submit" name="Купить" value="Купить">
+  </form>
+  <a href="/">Назад</a>
+</div>
+</body>
+</html>
